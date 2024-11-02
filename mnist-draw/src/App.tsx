@@ -1,11 +1,22 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
-import PixelGrid from './components/PixelGrid'
+import Mnist from './pages/mnist';
+import Home from './pages/home';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />
+  },
+  {
+    path: "/mnist",
+    element: <Mnist />
+  }
+]);
 
 function App() {
   return (
-    <main className="w-screen min-h-screen flex justify-center items-center bg-zinc-700 gap-8">
-      <PixelGrid />
-    </main>
+    <RouterProvider router={router} />
   )
 }
 
