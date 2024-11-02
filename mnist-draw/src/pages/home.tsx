@@ -8,12 +8,21 @@ export default function Home() {
   return (
     <>
       {isAuthenticated && (
-        <a
-          href="/mnist"
-          className="rounded-md shadow-md px-4 py-2 text-white bg-blue-600 hover:bg-blue-800 transition-all"
-        >
-          MNIST
-        </a>
+        <div className="flex flex-col gap-4 items-center">
+          <a
+            href="/mnist"
+            className="rounded-md shadow-md px-4 py-2 text-white bg-blue-600 hover:bg-blue-800 transition-all"
+          >
+            MNIST
+          </a>
+          <a
+            href="/purchase"
+            className="rounded-md shadow-md px-4 py-2 text-white bg-blue-600 hover:bg-blue-800 transition-all"
+          >
+            Purchase
+          </a>
+        </div>
+        
       )}
       {!isAuthenticated && (
         <button

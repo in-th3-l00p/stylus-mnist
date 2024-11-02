@@ -66,10 +66,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const handleDisconnectWallet = () => {
-    setIsAuthenticated(false);
-    setAddress(null);
-    setBalance(null);
+  const handleDisconnectWallet = async () => {
+    try {
+      if (!window.ethereum) {
+        alert("Please install MetaMask to use this feature.");
+        return;
+      }
+
+      new ethers.BrowserProvider(window.ethereum);
+      window.location.reload();
+    } catch (error) {
+      console.error("Wallet connection failed:", error);
+    }
   };
 
   if (loading) return <p className="text-white text-xl">Loading...</p>;
@@ -78,15 +86,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <main className="w-screen min-h-screen flex justify-center items-center bg-zinc-700 gap-8">
       <div className="absolute top-0 right-0 text-white p-4">
         {isAuthenticated ? (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col items-end gap-2">
             <p>
               Connected to wallet: {address?.substring(0, 10)}
               {address && address.length > 10 ? "..." : ""}
             </p>
-            <p>
-              Balance:{" "}
-              {balance ? formatUnits(balance, 18) : "0"} Tokens
-            </p>
+            <p>Balance: {balance ? balance.toString() : "0"} Tokens</p>
             <button type="button" onClick={handleDisconnectWallet}>
               Disconnect
             </button>
