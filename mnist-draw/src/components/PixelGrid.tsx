@@ -101,7 +101,7 @@ const PixelGrid = () => {
     )
   return (
     <div className="flex items-center flex-col gap-4">
-        {predict && <p className="text-white text-xl">Prediction: {predict}</p>}
+        {(predict !== undefined) && <p className="text-white text-xl">Prediction: {predict}</p>}
         <div className={"flex gap-8"}>
             <canvas
                 ref={canvasRef}
