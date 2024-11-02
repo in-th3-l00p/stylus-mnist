@@ -13,7 +13,7 @@ struct NeuralNet;
 
 #[public]
 impl NeuralNet {
-    fn user_main() -> u128 {
-        420
+    fn user_main() -> i32 {
+        -421000009
     }
 }
