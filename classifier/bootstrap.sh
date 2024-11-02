@@ -1,5 +1,9 @@
 #!/bin/sh
 
+init() {
+  cargo stylus export-abi
+}
+
 deploy() {
   cargo stylus deploy \
   --endpoint='http://localhost:8547' \
