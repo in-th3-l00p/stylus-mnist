@@ -1,10 +1,5 @@
 #!/bin/sh
 
-activate() {
-  sudo usermod -aG docker $USER
-  newgrp docker
-}
-
 deploy() {
   cargo stylus deploy \
   --endpoint='http://localhost:8547' \
