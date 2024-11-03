@@ -15,6 +15,6 @@ deploy() {
 
 run() {
   cast call --rpc-url 'http://localhost:8547' --private-key $PRIVATE_KEY \
-    $1 "increment()()"
+    $1 "setNumber(uint256 new_number)()" 0x1234
 }
 
